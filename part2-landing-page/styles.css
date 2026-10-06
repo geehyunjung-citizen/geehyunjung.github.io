@@ -1,0 +1,1484 @@
+/* ==========================================================================
+   브랜든 2세대 부피순삭 압축 파우치 랜딩 페이지
+   스타일 기준: assets/reference-image1.png
+   - 크림 바탕, 딥 올리브 풀블리드 밴드, 세이지 면, 버터색 알약 버튼
+   - 제목은 세리프(마루 부리), 본문은 산세리프(SUIT), 제목 아래 짧은 선
+   - 모서리 규칙: 버튼·칩은 pill, 카드·이미지는 10px
+   ========================================================================== */
+
+/* 폰트: 페이지에 쓰인 글자만 담은 서브셋(-subset.woff2)을 먼저 쓴다.
+   서브셋에 없는 글자가 생기면 그 글자에 한해 원본 폰트를 내려받는다.
+   (같은 이름의 @font-face는 나중에 선언한 것이 먼저 쓰인다)
+   문구를 바꾼 뒤에는 서브셋을 다시 만들면 원본을 받지 않는다. */
+@font-face {
+  font-family: "SUIT";
+  src: url("assets/fonts/SUIT-Variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SUIT";
+  src: url("assets/fonts/SUIT-Variable-subset.woff2") format("woff2");
+  font-weight: 100 900;
+  font-display: swap;
+  unicode-range: U+20-7E, U+A9, U+B7, U+D7, U+2013, U+2018-2019, U+201C-201D, U+2026, U+203B, U+2190-2193, U+300C-300F, U+AC00-AC01, U+AC04, U+AC08, U+AC10, U+AC15, U+AC19, U+AC1C, U+AC70, U+AC74, U+AC80, U+AC83, U+AC89, U+AC8C, U+ACA8-ACA9, U+ACAC, U+ACB0, U+ACB9, U+ACBD, U+ACC4, U+ACE0-ACE1, U+ACF5, U+ACFC-ACFD, U+AD50, U+AD6C-AD6D, U+AD74, U+AD8C, U+ADC0, U+ADDC, U+ADF8, U+ADFC, U+AE00, U+AE08-AE09, U+AE30, U+AE38, U+AE40-AE41, U+AE4C, U+AE65, U+AEBC, U+AEBE, U+AED1, U+AED8, U+AF2D, U+AFC7, U+B098-B099, U+B09C, U+B0A0, U+B0A8-B0A9, U+B0AE, U+B0B4, U+B108, U+B118, U+B123-B124, U+B140, U+B144, U+B150, U+B192, U+B204, U+B215, U+B294, U+B298, U+B2A5-B2A6, U+B2C8, U+B2D0, U+B2D9, U+B2E4, U+B2E6, U+B2E8, U+B2EB-B2EC, U+B2F4-B2F5, U+B2F9, U+B300, U+B354, U+B358, U+B35C, U+B367, U+B370, U+B3C4-B3C5, U+B3C8, U+B3CC, U+B3D9, U+B418, U+B41C, U+B420, U+B429, U+B450, U+B4A4, U+B4C8, U+B4DC, U+B4E0, U+B4E4, U+B4ED, U+B4EF, U+B4F1, U+B514, U+B525, U+B529, U+B530, U+B540, U+B54C, U+B5A0, U+B5A8, U+B5BB, U+B610, U+B69C, U+B6F0, U+B72F, U+B77C-B77D, U+B798, U+B79C, U+B7A8, U+B7AB, U+B7C9, U+B7EC, U+B7F0, U+B7FC-B7FD, U+B801, U+B808, U+B80C, U+B824-B825, U+B838, U+B85C-B85D, U+B860, U+B864, U+B86D, U+B8CC, U+B8E8-B8E9, U+B958, U+B974, U+B978, U+B97C, U+B984, U+B98E, U+B9AC-B9AD, U+B9B0, U+B9BC-B9BD, U+B9C1, U+B9C8-B9C9, U+B9CC, U+B9CE, U+B9D0, U+B9DE, U+B9E4, U+B9E8, U+B9FA, U+BA38, U+BA3C, U+BA40, U+BA54, U+BA70, U+BA74, U+BA85, U+BA87, U+BAA8-BAA9, U+BAB8, U+BABB, U+BB34, U+BB36, U+BB38, U+BB3B-BB3C, U+BBA4, U+BBC0, U+BBF8, U+BC00, U+BC0F, U+BC14-BC15, U+BC18, U+BC1B-BC1C, U+BC24, U+BC29, U+BC30-BC31, U+BC34, U+BC84, U+BC88, U+BC8C, U+BC95, U+BC97, U+BCA0, U+BCBC-BCBD, U+BCC0, U+BCC4, U+BCCD, U+BCF4, U+BCF8, U+BD09, U+BD80, U+BD84, U+BD88, U+BDF0, U+BE0C, U+BE14, U+BE44, U+BE48, U+BE4C, U+BE60, U+BE68, U+BED4, U+BED8, U+BFD0, U+C0AC-C0AD, U+C0B0, U+C0B4, U+C0C1, U+C0C8-C0C9, U+C0DD, U+C11C, U+C120, U+C131, U+C138-C139, U+C154, U+C158, U+C168, U+C18C-C18D, U+C190, U+C19F, U+C1A1, U+C1E0, U+C1FC, U+C218, U+C21C, U+C288, U+C2A4, U+C2B5, U+C2DC-C2DD, U+C2E0, U+C2E4, U+C2EC, U+C2F8, U+C313, U+C3D9, U+C3DF-C3E0, U+C4F0, U+C4F4, U+C528-C529, U+C539, U+C544, U+C548-C54A, U+C54C, U+C555, U+C558-C559, U+C561, U+C57C-C57D, U+C587, U+C591, U+C5B4-C5B5, U+C5B8, U+C5C6, U+C5C8, U+C5D0, U+C5D4, U+C5EC-C5ED, U+C5F0, U+C5F4, U+C5FC, U+C600-C601, U+C624, U+C628, U+C62C, U+C635, U+C637, U+C640, U+C644, U+C65C, U+C678, U+C694, U+C6A9, U+C6B0, U+C6B4, U+C6B8, U+C6C1, U+C6CC, U+C6D0, U+C6D4, U+C6E8, U+C704, U+C720, U+C728, U+C73C, U+C740, U+C744, U+C74C, U+C758, U+C774-C775, U+C778, U+C77C-C77D, U+C785, U+C788, U+C790-C791, U+C7A0-C7A1, U+C7A5, U+C7AC, U+C800-C801, U+C804, U+C808, U+C810-C811, U+C815, U+C81C, U+C838, U+C870, U+C885, U+C88C, U+C8E0, U+C8FC-C8FD, U+C900, U+C904, U+C90D, U+C911, U+C988, U+C98C, U+C99D, U+C9C0-C9C1, U+C9C4, U+C9C8, U+C9D0-C9D1, U+C9D5, U+C9DD, U+C9E7, U+C9F8, U+CA61, U+CABD, U+CBE4, U+CC22, U+CC28-CC29, U+CC2C, U+CC44, U+CC98, U+CC9C, U+CCAD, U+CCB4, U+CCD0, U+CD5C, U+CD94-CD95, U+CD9C, U+CDA9, U+CE20-CE21, U+CE35, U+CE58-CE59, U+CE68-CE69, U+CE74, U+CE78, U+CE90, U+CEE4, U+CEF7, U+CF00, U+CF13, U+CF54, U+CFE0, U+D034, U+D06C, U+D070, U+D074, U+D07C, U+D0A4, U+D0C0-D0C1, U+D0D1, U+D0D5, U+D0DC-D0DD, U+D130, U+D145, U+D14C, U+D150, U+D154, U+D15C, U+D168, U+D1B5, U+D22C, U+D280, U+D29C, U+D2B8-D2B9, U+D2BC, U+D2C8, U+D2F0-D2F1, U+D2F8, U+D305, U+D30C, U+D310, U+D321, U+D328-D329, U+D33D, U+D37C, U+D38C, U+D398, U+D3B8, U+D3BC, U+D3C9, U+D3D0, U+D3EC, U+D3F0, U+D3F4, U+D3FC, U+D45C, U+D47C, U+D480, U+D488, U+D48D, U+D504, U+D50C, U+D53C, U+D544, U+D551, U+D558, U+D55C, U+D560, U+D568-D569, U+D56D, U+D574, U+D588-D589, U+D5D8, U+D5E4, U+D600, U+D604, U+D611, U+D615, U+D638, U+D640, U+D654-D655, U+D658, U+D65C, U+D68C-D68D, U+D6A8, U+D6C4, U+D734, U+D750, U+D758, U+D770, U+D788, U+D78C, U+D798;
+}
+
+@font-face {
+  font-family: "MaruBuri";
+  src: url("assets/fonts/MaruBuri-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "MaruBuri";
+  src: url("assets/fonts/MaruBuri-SemiBold-subset.woff2") format("woff2");
+  font-weight: 600;
+  font-display: swap;
+  unicode-range: U+20-7E, U+A9, U+B7, U+D7, U+2013, U+2018-2019, U+201C-201D, U+2026, U+203B, U+2190-2193, U+300C-300F, U+AC00-AC01, U+AC04, U+AC08, U+AC10, U+AC15, U+AC19, U+AC1C, U+AC70, U+AC74, U+AC80, U+AC83, U+AC89, U+AC8C, U+ACA8-ACA9, U+ACAC, U+ACB0, U+ACB9, U+ACBD, U+ACC4, U+ACE0-ACE1, U+ACF5, U+ACFC-ACFD, U+AD50, U+AD6C-AD6D, U+AD74, U+AD8C, U+ADC0, U+ADDC, U+ADF8, U+ADFC, U+AE00, U+AE08-AE09, U+AE30, U+AE38, U+AE40-AE41, U+AE4C, U+AE65, U+AEBC, U+AEBE, U+AED1, U+AED8, U+AF2D, U+AFC7, U+B098-B099, U+B09C, U+B0A0, U+B0A8-B0A9, U+B0AE, U+B0B4, U+B108, U+B118, U+B123-B124, U+B140, U+B144, U+B150, U+B192, U+B204, U+B215, U+B294, U+B298, U+B2A5-B2A6, U+B2C8, U+B2D0, U+B2D9, U+B2E4, U+B2E6, U+B2E8, U+B2EB-B2EC, U+B2F4-B2F5, U+B2F9, U+B300, U+B354, U+B358, U+B35C, U+B367, U+B370, U+B3C4-B3C5, U+B3C8, U+B3CC, U+B3D9, U+B418, U+B41C, U+B420, U+B429, U+B450, U+B4A4, U+B4C8, U+B4DC, U+B4E0, U+B4E4, U+B4ED, U+B4EF, U+B4F1, U+B514, U+B525, U+B529, U+B530, U+B540, U+B54C, U+B5A0, U+B5A8, U+B5BB, U+B610, U+B69C, U+B6F0, U+B72F, U+B77C-B77D, U+B798, U+B79C, U+B7A8, U+B7AB, U+B7C9, U+B7EC, U+B7F0, U+B7FC-B7FD, U+B801, U+B808, U+B80C, U+B824-B825, U+B838, U+B85C-B85D, U+B860, U+B864, U+B86D, U+B8CC, U+B8E8-B8E9, U+B958, U+B974, U+B978, U+B97C, U+B984, U+B98E, U+B9AC-B9AD, U+B9B0, U+B9BC-B9BD, U+B9C1, U+B9C8-B9C9, U+B9CC, U+B9CE, U+B9D0, U+B9DE, U+B9E4, U+B9E8, U+B9FA, U+BA38, U+BA3C, U+BA40, U+BA54, U+BA70, U+BA74, U+BA85, U+BA87, U+BAA8-BAA9, U+BAB8, U+BABB, U+BB34, U+BB36, U+BB38, U+BB3B-BB3C, U+BBA4, U+BBC0, U+BBF8, U+BC00, U+BC0F, U+BC14-BC15, U+BC18, U+BC1B-BC1C, U+BC24, U+BC29, U+BC30-BC31, U+BC34, U+BC84, U+BC88, U+BC8C, U+BC95, U+BC97, U+BCA0, U+BCBC-BCBD, U+BCC0, U+BCC4, U+BCCD, U+BCF4, U+BCF8, U+BD09, U+BD80, U+BD84, U+BD88, U+BDF0, U+BE0C, U+BE14, U+BE44, U+BE48, U+BE4C, U+BE60, U+BE68, U+BED4, U+BED8, U+BFD0, U+C0AC-C0AD, U+C0B0, U+C0B4, U+C0C1, U+C0C8-C0C9, U+C0DD, U+C11C, U+C120, U+C131, U+C138-C139, U+C154, U+C158, U+C168, U+C18C-C18D, U+C190, U+C19F, U+C1A1, U+C1E0, U+C1FC, U+C218, U+C21C, U+C288, U+C2A4, U+C2B5, U+C2DC-C2DD, U+C2E0, U+C2E4, U+C2EC, U+C2F8, U+C313, U+C3D9, U+C3DF-C3E0, U+C4F0, U+C4F4, U+C528-C529, U+C539, U+C544, U+C548-C54A, U+C54C, U+C555, U+C558-C559, U+C561, U+C57C-C57D, U+C587, U+C591, U+C5B4-C5B5, U+C5B8, U+C5C6, U+C5C8, U+C5D0, U+C5D4, U+C5EC-C5ED, U+C5F0, U+C5F4, U+C5FC, U+C600-C601, U+C624, U+C628, U+C62C, U+C635, U+C637, U+C640, U+C644, U+C65C, U+C678, U+C694, U+C6A9, U+C6B0, U+C6B4, U+C6B8, U+C6C1, U+C6CC, U+C6D0, U+C6D4, U+C6E8, U+C704, U+C720, U+C728, U+C73C, U+C740, U+C744, U+C74C, U+C758, U+C774-C775, U+C778, U+C77C-C77D, U+C785, U+C788, U+C790-C791, U+C7A0-C7A1, U+C7A5, U+C7AC, U+C800-C801, U+C804, U+C808, U+C810-C811, U+C815, U+C81C, U+C838, U+C870, U+C885, U+C88C, U+C8E0, U+C8FC-C8FD, U+C900, U+C904, U+C90D, U+C911, U+C988, U+C98C, U+C99D, U+C9C0-C9C1, U+C9C4, U+C9C8, U+C9D0-C9D1, U+C9D5, U+C9DD, U+C9E7, U+C9F8, U+CA61, U+CABD, U+CBE4, U+CC22, U+CC28-CC29, U+CC2C, U+CC44, U+CC98, U+CC9C, U+CCAD, U+CCB4, U+CCD0, U+CD5C, U+CD94-CD95, U+CD9C, U+CDA9, U+CE20-CE21, U+CE35, U+CE58-CE59, U+CE68-CE69, U+CE74, U+CE78, U+CE90, U+CEE4, U+CEF7, U+CF00, U+CF13, U+CF54, U+CFE0, U+D034, U+D06C, U+D070, U+D074, U+D07C, U+D0A4, U+D0C0-D0C1, U+D0D1, U+D0D5, U+D0DC-D0DD, U+D130, U+D145, U+D14C, U+D150, U+D154, U+D15C, U+D168, U+D1B5, U+D22C, U+D280, U+D29C, U+D2B8-D2B9, U+D2BC, U+D2C8, U+D2F0-D2F1, U+D2F8, U+D305, U+D30C, U+D310, U+D321, U+D328-D329, U+D33D, U+D37C, U+D38C, U+D398, U+D3B8, U+D3BC, U+D3C9, U+D3D0, U+D3EC, U+D3F0, U+D3F4, U+D3FC, U+D45C, U+D47C, U+D480, U+D488, U+D48D, U+D504, U+D50C, U+D53C, U+D544, U+D551, U+D558, U+D55C, U+D560, U+D568-D569, U+D56D, U+D574, U+D588-D589, U+D5D8, U+D5E4, U+D600, U+D604, U+D611, U+D615, U+D638, U+D640, U+D654-D655, U+D658, U+D65C, U+D68C-D68D, U+D6A8, U+D6C4, U+D734, U+D750, U+D758, U+D770, U+D788, U+D78C, U+D798;
+}
+
+:root {
+  --bg: #f4f1e1;
+  --bg-tint: #ebe7d2;
+  --surface: #fbf9ee;
+  --ink: #353d22;
+  --text: #3d432e;
+  --ink-soft: #5a6048;
+  --line: #c9c5ac;
+  --sage: #aeb199;
+  --sage-ink: #272d1a;
+  --sage-ink-soft: #363c28;
+  --olive: #3b4427;
+  --olive-card: #343c22;
+  --olive-line: #5d6646;
+  --on-olive: #f4f1e1;
+  --on-olive-soft: #cdd0bb;
+  --butter: #f0e1a3;
+  --butter-press: #e6d38a;
+  --on-butter: #1f2412;
+  --shadow: 0 18px 40px -24px rgba(53, 61, 34, 0.5);
+
+  --radius: 10px;
+  --header-h: 68px;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --serif: "MaruBuri", "Nanum Myeongjo", "AppleMyungjo", "Batang", serif;
+  --sans: "SUIT", "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
+
+  /* z-index scale */
+  --z-header: 100;
+  --z-skip: 200;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #191d11;
+    --bg-tint: #1f2416;
+    --surface: #262c1b;
+    --ink: #efecda;
+    --text: #dcd9c6;
+    --ink-soft: #a9ad95;
+    --line: #3e4530;
+    --sage: #3a412b;
+    --sage-ink: #efecda;
+    --sage-ink-soft: #c5c8b2;
+    --olive: #2a311b;
+    --olive-card: #323a21;
+    --olive-line: #4c5538;
+    --shadow: 0 18px 40px -24px rgba(0, 0, 0, 0.75);
+  }
+}
+
+/* --- Base ---------------------------------------------------------------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-h) + 12px);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 1rem;
+  line-height: 1.7;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+p,
+figure,
+blockquote,
+ul,
+ol,
+dl,
+dd {
+  margin: 0;
+}
+
+ul,
+ol {
+  padding: 0;
+  list-style: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
+.container {
+  width: 100%;
+  max-width: 1240px;
+  margin-inline: auto;
+  padding-inline: 20px;
+}
+
+.skip-link {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  z-index: var(--z-skip);
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: var(--olive);
+  color: var(--on-olive);
+  transform: translateY(-200%);
+}
+
+.skip-link:focus {
+  transform: none;
+}
+
+/* --- Typography ---------------------------------------------------------- */
+
+h1,
+h2,
+h3 {
+  color: var(--ink);
+  font-family: var(--serif);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: clamp(1.75rem, 1.05rem + 2.5vw, 3rem);
+  line-height: 1.3;
+}
+
+h2 {
+  font-size: clamp(1.5rem, 1.05rem + 1.7vw, 2.45rem);
+  line-height: 1.34;
+}
+
+h3 {
+  font-size: 1.2rem;
+  line-height: 1.45;
+}
+
+.eyebrow {
+  margin-bottom: 14px;
+  color: var(--ink);
+  font-size: 0.76rem;
+  font-weight: 750;
+  letter-spacing: 0.16em;
+}
+
+/* 레퍼런스의 제목 아래 짧은 선 */
+.section-head h2::after {
+  content: "";
+  display: block;
+  width: 74px;
+  height: 1px;
+  margin-top: 22px;
+  background: currentColor;
+}
+
+.section-head-center {
+  margin-inline: auto;
+  text-align: center;
+}
+
+.section-head-center h2::after {
+  margin-inline: auto;
+}
+
+.lead {
+  max-width: 44em;
+  margin-top: 22px;
+  color: var(--ink-soft);
+  font-size: 1.06rem;
+  text-wrap: pretty;
+}
+
+.note {
+  color: var(--ink-soft);
+  font-size: 0.86rem;
+  line-height: 1.6;
+}
+
+/* 페이지 첫머리 쿠팡 파트너스 고지: 첫 제휴 링크(헤더 버튼)보다 먼저 보이게 한다 */
+.top-disclosure {
+  padding: 8px 20px;
+  border-bottom: 1px solid var(--line);
+  color: var(--ink-soft);
+  font-size: 0.78rem;
+  line-height: 1.5;
+  text-align: center;
+}
+
+/* CTA 버튼 바로 아래 쿠팡 파트너스 고지 */
+.cta-disclosure {
+  color: var(--ink-soft);
+  font-size: 0.78rem;
+  line-height: 1.55;
+}
+
+.band-dark .cta-disclosure {
+  color: var(--on-olive-soft);
+}
+
+.final-copy .cta-disclosure {
+  margin-top: 10px;
+}
+
+/* SUIT의 화살표 글리프는 꺾쇠처럼 보여서 시스템 폰트의 화살표를 쓴다 */
+.arrow {
+  font-family: "Segoe UI", "Apple SD Gothic Neo", system-ui, sans-serif;
+  font-weight: 400;
+}
+
+/* --- Media frames -------------------------------------------------------- */
+
+.media {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius);
+  background: #f1f3f5;
+}
+
+.media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 이미지가 없거나 로드에 실패하면 '이미지 준비 중' 표시 */
+.media.is-failed {
+  display: grid;
+  min-height: 180px;
+  place-items: center;
+  padding: 24px;
+  border: 1px dashed #9aa08a;
+  background: #f1f3f5;
+  color: #4a5038;
+  font-size: 0.95rem;
+  font-weight: 650;
+  text-align: center;
+}
+
+.media.is-failed::after {
+  content: "이미지 준비 중";
+  color: #4a5038;
+}
+
+/* --- Buttons ------------------------------------------------------------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 54px;
+  padding: 0 30px;
+  border: 1px solid var(--on-butter);
+  border-radius: 999px;
+  font: inherit;
+  font-weight: 750;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.25s var(--ease), background-color 0.25s var(--ease);
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn-primary {
+  background: var(--butter);
+  color: var(--on-butter);
+  font-size: clamp(0.95rem, 0.9rem + 0.3vw, 1.04rem);
+}
+
+.btn-primary .arrow {
+  display: inline-block;
+  transition: transform 0.25s var(--ease);
+}
+
+.btn-sage {
+  border-color: transparent;
+  background: #aeb199;
+  color: #272d1a;
+}
+
+.btn-small {
+  min-height: 44px;
+  padding: 0 20px;
+  font-size: 0.92rem;
+}
+
+@media (hover: hover) {
+  .btn-primary:hover {
+    background: var(--butter-press);
+  }
+
+  .btn-primary:hover .arrow {
+    transform: translateX(4px);
+  }
+
+  .btn-sage:hover {
+    background: #9fa38a;
+  }
+}
+
+/* --- Announce bar + Header ---------------------------------------------- */
+
+.scroll-sentinel {
+  position: absolute;
+  top: 0;
+  width: 1px;
+  height: 64px;
+  pointer-events: none;
+}
+
+.announce {
+  padding: 10px 20px;
+  background: var(--sage);
+  color: var(--sage-ink);
+  font-size: 0.86rem;
+  font-weight: 650;
+  letter-spacing: 0.02em;
+  text-align: center;
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-header);
+  border-bottom: 1px solid transparent;
+  background: color-mix(in srgb, var(--bg) 82%, transparent);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  backdrop-filter: blur(14px) saturate(140%);
+  transition: border-color 0.3s var(--ease);
+}
+
+.site-header.is-stuck {
+  border-bottom-color: var(--line);
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .site-header {
+    background: var(--bg);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  height: var(--header-h);
+}
+
+/* 터치 영역은 모두 최소 44px 높이 */
+.wordmark,
+.header-nav a,
+.hero-nudge,
+.footer-top-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3em;
+  min-height: 44px;
+}
+
+.wordmark {
+  color: var(--ink);
+  font-size: 1.3rem;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+}
+
+.header-nav {
+  display: none;
+  gap: 36px;
+}
+
+.header-nav a {
+  padding: 0 4px;
+  color: var(--ink);
+  font-size: 0.95rem;
+  font-weight: 650;
+  text-decoration: none;
+  text-underline-offset: 6px;
+}
+
+.header-nav a:hover {
+  text-decoration: underline;
+}
+
+/* --- Hero ---------------------------------------------------------------- */
+
+/* 모바일: 기획서 순서대로 한 줄 스택 (호출·헤드라인 → 비교 → 서브카피 → 지퍼 동작 → CTA → 스크롤) */
+.hero {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding-block: 28px 48px;
+}
+
+.hero-copy,
+.hero-visual {
+  display: contents;
+}
+
+.hero-head {
+  order: 1;
+}
+
+.hero-compare {
+  order: 2;
+  aspect-ratio: 1000 / 665;
+  box-shadow: var(--shadow);
+}
+
+.hero-body {
+  order: 3;
+}
+
+.hero-how {
+  order: 4;
+  display: grid;
+  grid-template-columns: 112px 1fr;
+  align-items: center;
+  gap: 16px;
+}
+
+.hero-how .media {
+  aspect-ratio: 1000 / 890;
+}
+
+.hero-how figcaption {
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 1.02rem;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.hero-cta {
+  order: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 12px;
+}
+
+.hero-nudge {
+  order: 6;
+}
+
+.hero-pouch {
+  display: none;
+}
+
+.hero-call {
+  margin-bottom: 14px;
+  color: var(--ink-soft);
+  font-size: 0.98rem;
+  font-weight: 700;
+  line-height: 1.55;
+}
+
+.hero-sub {
+  max-width: 34em;
+  font-size: 1.04rem;
+}
+
+.hero-body .note {
+  margin-top: 10px;
+}
+
+.cta-value {
+  color: var(--ink);
+  font-size: 0.98rem;
+  font-weight: 700;
+  line-height: 1.55;
+}
+
+.hero-nudge {
+  align-self: flex-start;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--line);
+  color: var(--ink);
+  font-size: 0.95rem;
+  font-weight: 650;
+  text-decoration: none;
+  transition: border-color 0.2s var(--ease);
+}
+
+.hero-nudge:hover {
+  border-bottom-color: var(--ink);
+}
+
+/* 히어로 아래 세이지 밴드: 공식 제품 등록명 */
+.name-band {
+  padding: 30px 0 34px;
+  border-radius: 28px 28px 0 0;
+  background: var(--sage);
+  color: var(--sage-ink-soft);
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+.name-band-title {
+  margin-bottom: 6px;
+  color: var(--sage-ink);
+  font-family: var(--serif);
+  font-size: clamp(1.25rem, 1rem + 1.3vw, 2rem);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  line-height: 1.4;
+}
+
+/* --- Sections ------------------------------------------------------------ */
+
+.section {
+  padding-block: clamp(64px, 9vw, 112px);
+}
+
+.section-tint {
+  background: var(--bg-tint);
+}
+
+.section-head {
+  max-width: 880px;
+  margin-bottom: clamp(32px, 5vw, 56px);
+}
+
+.anchor-alias {
+  display: block;
+}
+
+/* 딥 올리브 풀블리드 밴드 */
+.band-dark {
+  background: var(--olive);
+  color: var(--on-olive-soft);
+}
+
+.band-dark h2,
+.band-dark h3 {
+  color: var(--on-olive);
+}
+
+.band-dark .eyebrow {
+  color: var(--on-olive-soft);
+}
+
+.band-dark .lead,
+.band-dark .note {
+  color: var(--on-olive-soft);
+}
+
+.band-dark :focus-visible {
+  outline-color: var(--butter);
+}
+
+/* --- Pain ---------------------------------------------------------------- */
+
+.pain-intro {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 28px;
+  margin-bottom: 28px;
+}
+
+.pain-intro .section-head {
+  margin-bottom: 0;
+}
+
+.pain-photo {
+  aspect-ratio: 497 / 520;
+}
+
+.pain-cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+.pain-card {
+  padding: 28px 24px 30px;
+  border-radius: var(--radius);
+  background: var(--olive-card);
+}
+
+.pain-card .when {
+  margin-bottom: 12px;
+  color: var(--on-olive-soft);
+  font-size: 0.8rem;
+  font-weight: 750;
+  letter-spacing: 0.08em;
+}
+
+.pain-card p:last-child {
+  margin-top: 10px;
+  color: var(--on-olive-soft);
+  font-size: 0.97rem;
+}
+
+/* --- Solution ------------------------------------------------------------ */
+
+.how-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+}
+
+.steps li {
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  gap: 16px;
+  padding-block: 22px;
+}
+
+.steps li + li {
+  border-top: 1px solid var(--line);
+}
+
+.steps li:first-child {
+  padding-top: 0;
+}
+
+.step-no {
+  display: grid;
+  width: 44px;
+  height: 44px;
+  place-items: center;
+  border-radius: 999px;
+  background: var(--sage);
+  color: var(--sage-ink);
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.steps p {
+  margin-top: 4px;
+  color: var(--ink-soft);
+}
+
+.how-photos {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+.how-photo-a {
+  aspect-ratio: 1000 / 680;
+}
+
+.how-photo-b {
+  aspect-ratio: 1000 / 890;
+}
+
+/* 레퍼런스의 '이미지 + 색면 박스' 분할 블록 */
+.change-split {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin-top: clamp(32px, 5vw, 64px);
+}
+
+.change-diagram {
+  background: #fafafa;
+}
+
+.change-diagram img {
+  object-fit: contain;
+}
+
+.change-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 12px 24px;
+  border-radius: var(--radius);
+  background: var(--sage);
+  color: var(--sage-ink-soft);
+}
+
+.change-list h3 {
+  color: var(--sage-ink);
+}
+
+.change-list li {
+  padding-block: 18px;
+}
+
+.change-list li + li {
+  border-top: 1px solid color-mix(in srgb, var(--sage-ink) 28%, transparent);
+}
+
+.change-list p {
+  margin-top: 4px;
+}
+
+/* --- Proof --------------------------------------------------------------- */
+
+.material-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+.material-card {
+  padding: 24px;
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.material-card > p {
+  margin-top: 10px;
+  color: var(--ink-soft);
+}
+
+.fabric-media {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.fabric-media .media {
+  background: #fafafa;
+}
+
+.material-fabric .note {
+  margin-top: 12px;
+}
+
+.material-zipper .media {
+  aspect-ratio: 1;
+  margin-bottom: 22px;
+}
+
+.fit-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 28px;
+  margin-top: clamp(48px, 7vw, 88px);
+}
+
+.fit-copy h3 {
+  font-size: clamp(1.3rem, 1.05rem + 0.9vw, 1.8rem);
+}
+
+.fit-copy > p {
+  margin-top: 12px;
+  color: var(--ink-soft);
+}
+
+.sizes {
+  margin-top: 28px;
+}
+
+.size-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 6px;
+  padding-block: 18px;
+}
+
+.size-row + .size-row {
+  border-top: 1px solid var(--line);
+}
+
+.size-row dt {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--ink);
+  font-weight: 750;
+}
+
+.size-chip {
+  display: grid;
+  width: 40px;
+  height: 28px;
+  place-items: center;
+  border-radius: 999px;
+  background: var(--olive);
+  color: var(--on-olive);
+  font-size: 0.86rem;
+  font-weight: 800;
+}
+
+.size-row dd p {
+  color: var(--ink-soft);
+  font-size: 0.94rem;
+}
+
+.size-row dd .size-drop {
+  color: var(--ink);
+}
+
+.size-drop b {
+  font-size: 1.3rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+}
+
+.size-drop .arrow {
+  margin-inline: 4px;
+  color: var(--ink-soft);
+}
+
+.fit-carrier,
+.fit-size {
+  background: #ffffff;
+}
+
+.fit-size {
+  padding: 24px;
+}
+
+.fit-size img,
+.fit-carrier img {
+  object-fit: contain;
+}
+
+/* 후기: 레퍼런스의 세이지 카드 */
+.reviews {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin-top: clamp(48px, 7vw, 88px);
+}
+
+.review {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 28px 24px;
+  border-radius: var(--radius);
+  background: var(--sage);
+  color: var(--sage-ink);
+}
+
+.review blockquote {
+  font-family: var(--serif);
+  font-size: 1.12rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.6;
+}
+
+.review figcaption {
+  color: var(--sage-ink-soft);
+  font-size: 0.86rem;
+}
+
+/* --- FAQ ----------------------------------------------------------------- */
+
+.faq-wrap {
+  max-width: 840px;
+}
+
+.faq-item {
+  border-bottom: 1px solid var(--ink);
+}
+
+.faq-item h3 {
+  font-family: var(--sans);
+  letter-spacing: -0.02em;
+}
+
+.faq-q {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  width: 100%;
+  padding: 22px 4px;
+  border: 0;
+  background: none;
+  color: var(--ink);
+  font: inherit;
+  font-size: 1.06rem;
+  font-weight: 700;
+  line-height: 1.5;
+  text-align: left;
+  cursor: pointer;
+}
+
+.faq-icon {
+  position: relative;
+  flex: none;
+  width: 16px;
+  height: 16px;
+}
+
+.faq-icon::before,
+.faq-icon::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 16px;
+  height: 1.5px;
+  margin-top: -0.75px;
+  background: currentColor;
+  transition: transform 0.35s var(--ease);
+}
+
+.faq-icon::after {
+  transform: rotate(90deg);
+}
+
+.faq-item.is-open .faq-icon::after {
+  transform: rotate(0deg);
+}
+
+.faq-a {
+  padding: 0 12px 0 4px;
+  color: var(--ink-soft);
+}
+
+.faq-a p:last-child {
+  padding-bottom: 24px;
+}
+
+.faq-a p + p {
+  margin-top: 10px;
+}
+
+.faq-a strong {
+  color: var(--ink);
+  font-weight: 750;
+}
+
+.faq-a code {
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--bg-tint);
+  color: var(--ink);
+  font: inherit;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* JS가 있을 때만 접힘 동작. 없으면 전부 펼쳐진 상태로 읽힌다. */
+.js .faq-panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  visibility: hidden;
+  transition: grid-template-rows 0.4s var(--ease), visibility 0.4s;
+}
+
+.js .faq-panel > .faq-a {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.js .faq-item.is-open .faq-panel {
+  grid-template-rows: 1fr;
+  visibility: visible;
+}
+
+.faq-source {
+  margin-top: 40px;
+}
+
+.faq-source .media {
+  max-width: 520px;
+  margin-inline: auto;
+  border: 1px solid var(--line);
+  background: #ffffff;
+}
+
+.faq-source figcaption {
+  margin-top: 12px;
+  color: var(--ink-soft);
+  font-size: 0.86rem;
+  text-align: center;
+}
+
+/* --- Final CTA: 레퍼런스의 '테두리 박스 + 이미지' 딥 올리브 밴드 ----------- */
+
+.final-block {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.final-photo {
+  order: -1;
+  aspect-ratio: 1000 / 1475;
+  border-radius: var(--radius) var(--radius) 0 0;
+  background: #ffffff;
+}
+
+.final-copy {
+  display: flex;
+  flex-direction: column;
+  padding: 28px 22px 30px;
+  border: 1px solid var(--on-olive);
+  border-radius: 0 0 var(--radius) var(--radius);
+}
+
+.offers {
+  margin-top: 24px;
+}
+
+.offers > div {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2px;
+  padding-block: 14px;
+  border-top: 1px solid var(--olive-line);
+}
+
+.offers dt {
+  font-size: 0.9rem;
+  font-weight: 650;
+}
+
+.offers dd b {
+  display: block;
+  color: var(--on-olive);
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+}
+
+.offers dd span {
+  font-size: 0.94rem;
+}
+
+.assurances {
+  display: grid;
+  gap: 8px;
+  margin-block: 8px 26px;
+  padding-top: 18px;
+  border-top: 1px solid var(--olive-line);
+  font-size: 0.94rem;
+}
+
+.assurances b {
+  display: block;
+  color: var(--on-olive);
+  font-weight: 750;
+}
+
+.final-copy .note {
+  margin-top: 14px;
+}
+
+/* --- Footer: 세이지 면 + 큰 워드마크 -------------------------------------- */
+
+.site-footer {
+  padding-block: 48px 28px;
+  background: var(--sage);
+  color: var(--sage-ink-soft);
+  font-size: 0.9rem;
+}
+
+.footer-top {
+  display: grid;
+  gap: 20px;
+}
+
+.footer-notes {
+  display: grid;
+  gap: 10px;
+  max-width: 70ch;
+}
+
+.footer-disclosure {
+  color: var(--sage-ink);
+  font-weight: 750;
+}
+
+.footer-top-link {
+  justify-self: start;
+  color: var(--sage-ink);
+  font-weight: 750;
+  text-underline-offset: 4px;
+}
+
+.footer-wordmark {
+  margin-top: 28px;
+  color: var(--olive);
+  font-size: clamp(3rem, calc(19.4vw - 14px), 14.5rem);
+  font-weight: 900;
+  letter-spacing: -0.01em;
+  line-height: 0.95;
+  white-space: nowrap;
+}
+
+@media (prefers-color-scheme: dark) {
+  .footer-wordmark {
+    color: var(--sage-ink-soft);
+  }
+}
+
+.footer-copy {
+  margin-top: 16px;
+  font-size: 0.82rem;
+}
+
+/* --- Breakpoints --------------------------------------------------------- */
+
+@media (min-width: 640px) {
+  .container {
+    padding-inline: 32px;
+  }
+
+  .faq-a {
+    padding-right: 52px;
+  }
+
+  .hero-cta {
+    align-items: flex-start;
+  }
+
+  .hero-how {
+    grid-template-columns: 160px 1fr;
+  }
+
+  .pain-intro {
+    grid-template-columns: 0.8fr 1fr;
+    align-items: center;
+    gap: 40px;
+  }
+
+  .how-photos {
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+  }
+
+  .material-card {
+    padding: 32px;
+  }
+
+  .change-list {
+    padding: 20px 36px;
+  }
+
+  .size-row {
+    grid-template-columns: 150px 1fr;
+    gap: 16px;
+  }
+
+  .offers > div {
+    grid-template-columns: 150px 1fr;
+    gap: 16px;
+    align-items: baseline;
+  }
+
+  .final-copy {
+    padding: 36px 36px 40px;
+  }
+
+  .footer-top {
+    grid-template-columns: 1fr auto;
+    align-items: start;
+  }
+}
+
+@media (min-width: 960px) {
+  .header-nav {
+    display: flex;
+  }
+
+  /* Hero: 좌측 카피, 우측 비교 이미지 + 겹쳐진 보조 컷 */
+  .hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.06fr);
+    align-items: center;
+    gap: clamp(36px, 5vw, 72px);
+    min-height: min(calc(100dvh - var(--header-h) - 40px), 820px);
+    padding-block: 28px 44px;
+  }
+
+  .hero h1 {
+    font-size: clamp(1.9rem, 3.1vw, 2.6rem);
+  }
+
+  .hero-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+  }
+
+  .hero-visual {
+    display: grid;
+    grid-template-columns: 27% 1fr;
+    align-items: start;
+    column-gap: 20px;
+  }
+
+  .hero-compare {
+    grid-area: 1 / 1 / 2 / -1;
+  }
+
+  .hero-pouch {
+    display: block;
+    grid-area: 2 / 1;
+    aspect-ratio: 1;
+    margin: -30px 0 0 -20px;
+    border: 6px solid var(--bg);
+    background: #ffffff;
+    box-shadow: var(--shadow);
+  }
+
+  .hero-how {
+    grid-area: 2 / 2;
+    grid-template-columns: 1fr 52%;
+    gap: 20px;
+    padding-top: 18px;
+  }
+
+  .hero-how .media {
+    order: 2;
+    margin-top: -48px;
+    border: 6px solid var(--bg);
+    box-shadow: var(--shadow);
+  }
+
+  .hero-how figcaption {
+    order: 1;
+  }
+
+  /* Pain: 사진 + 제목 분할, 아래 카드 3열 */
+  .pain-intro {
+    grid-template-columns: 0.62fr 1fr;
+    gap: 64px;
+    margin-bottom: 40px;
+  }
+
+  .pain-cards {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .pain-card {
+    padding: 32px 32px 36px;
+  }
+
+  /* Solution */
+  .how-grid {
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    align-items: center;
+    gap: 64px;
+  }
+
+  .how-photos {
+    grid-template-columns: 1.25fr 1fr;
+    align-items: end;
+  }
+
+  .how-photo-a {
+    margin-bottom: 48px;
+  }
+
+  .change-split {
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .change-list {
+    padding: 32px 48px;
+  }
+
+  /* Proof */
+  /* 지퍼 사진을 원본 비율로 보여주므로 원단 카드는 내용 높이만큼만 차지한다 */
+  .material-grid {
+    grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+    align-items: start;
+    gap: 20px;
+  }
+
+  .material-card {
+    padding: 40px;
+  }
+
+  .material-fabric .fabric-media {
+    margin-top: 28px;
+  }
+
+  .fit-grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+    grid-template-areas:
+      "copy carrier"
+      "size carrier";
+    align-items: start;
+    column-gap: 64px;
+    row-gap: 36px;
+  }
+
+  .fit-copy {
+    grid-area: copy;
+  }
+
+  .fit-carrier {
+    grid-area: carrier;
+  }
+
+  .fit-size {
+    grid-area: size;
+    max-width: 420px;
+  }
+
+  .reviews {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .review {
+    padding: 32px;
+  }
+
+  /* Final CTA */
+  .final-block {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.85fr);
+    align-items: stretch;
+  }
+
+  .final-copy {
+    padding: 48px 48px 52px;
+    border-radius: var(--radius) 0 0 var(--radius);
+  }
+
+  .final-copy .btn {
+    align-self: flex-start;
+  }
+
+  .final-photo {
+    order: 0;
+    aspect-ratio: auto;
+    min-height: 100%;
+    border-radius: 0 var(--radius) var(--radius) 0;
+  }
+
+  /* 세트 사진은 자르지 않고 칸 안에 전체를 담는다 (사진 배경이 흰색이라 여백이 자연스럽다) */
+  .final-photo img {
+    position: absolute;
+    inset: 0;
+    object-fit: contain;
+  }
+}
+
+/* --- Motion (MOTION_INTENSITY 4: 로드 인, 스크롤 리빌, 상태 전환만) --------- */
+
+@media (prefers-reduced-motion: no-preference) {
+  /* 스크롤 리빌: 섹션이 들어올 때 읽는 순서를 따라 한 번만 떠오른다 */
+  .js [data-reveal] {
+    opacity: 0;
+    transform: translateY(22px);
+    transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+
+  .js [data-reveal].is-in {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* 히어로 로드 인: 카피 → 이미지 순으로 시선을 유도 */
+  .hero-head,
+  .hero-body,
+  .hero-cta,
+  .hero-nudge,
+  .hero-compare,
+  .hero-pouch,
+  .hero-how {
+    animation: rise 0.8s var(--ease) both;
+  }
+
+  .hero-body {
+    animation-delay: 80ms;
+  }
+
+  .hero-cta {
+    animation-delay: 160ms;
+  }
+
+  .hero-nudge {
+    animation-delay: 240ms;
+  }
+
+  .hero-compare {
+    animation-delay: 120ms;
+  }
+
+  .hero-pouch {
+    animation-delay: 300ms;
+  }
+
+  .hero-how {
+    animation-delay: 380ms;
+  }
+
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(18px);
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
